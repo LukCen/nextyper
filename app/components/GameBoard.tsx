@@ -4,7 +4,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { calculateAccuracy, calculateWPM, getNextIndex, getNextSentence } from "@/lib/gameUtils"
 import "@/lib/sentences"
 import { sentences } from "@/lib/sentences"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface GameBoardProps {
   playerNameProp: string
@@ -31,6 +31,8 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
   const [currentSentence, setCurrentSentence] = useState(sentences[0])
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0)
 
+  // for auto-focus on the input on round transition
+  const inputRef = useRef<HTMLInputElement>(null)
   // splits current sentence into individual characters for the purpose of checking typing accuracy
   const wordsToType = currentSentence.split(" ")
   // fetch using helpers
@@ -89,6 +91,7 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
 
   // round progress control 
   useEffect(() => {
+
     if (!isFinished) return
     if (round >= 10) return
 
@@ -103,10 +106,12 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
       setSingleWord("")
       setCurrentWord(0)
       setTimeElapsed(0)
-      setCorrectChars(0)
-      setTotalChars(0)
       setIsFinished(false)
       setIsRunning(false)
+
+      setTimeout(() => {
+        inputRef.current?.focus()
+      }, 50)
     }, 2000)
   }, [isFinished])
 
@@ -159,7 +164,7 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
             </span>
           ))}
         </p>
-        <input autoFocus disabled={isFinished} value={singleWord} onChange={handleChange} className="px-4 py-1 border border-solid border-black rounded-md" type="text" placeholder="user types here" />
+        <input ref={inputRef} autoFocus disabled={isFinished} value={singleWord} onChange={handleChange} className="px-4 py-1 border border-solid border-black rounded-md" type="text" placeholder="user types here" />
         <button
           className={isFinished && round >= 10 ? "" : "hidden"} onClick={addScore}>
           Add my score to the high score!
