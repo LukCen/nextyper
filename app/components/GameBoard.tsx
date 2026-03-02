@@ -147,20 +147,13 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
         <p className="text-center font-medium">
           {wordsToType.map((w, i) => (
             <span key={i}>
-              {i === currentWord
-                ? w.split("").map((char, j) => (
-                  <span
-                    key={j}
-                    className={j < singleWord.length ? singleWord[j] === char ? "bg-blue-300" : "bg-red-500" : ""}
-                  >
-                    {char}
-                  </span>
-                ))
-                : i < currentWord
-                  ? <span className="bg-green-500">{w}</span> // already typed - greyed out
-                  : w // not yet typed - plain
-              }
-              {" "}
+              {i === currentWord ? w.split("").map((char, j) => (
+                <span key={j} className={j < singleWord.length ? singleWord[j] === char ? "bg-blue-300" : "bg-red-500" : ""}>
+                  {char}
+                </span>
+              )) : i < currentWord ? <span className="bg-green-500">{w}</span> // already typed - greyed out
+                : w // not yet typed - plain
+              }{" "}
             </span>
           ))}
         </p>

@@ -50,3 +50,7 @@ The round starts when you begin typing into the input field. The input will be a
 ## Design Decisions
 - "Sentence" was interpreted as the full round text. Accuracy = correct keystrokes / total keystrokes across the round.
 - Sentences were generated using <https://randomwordgenerator.com/sentence.php>
+
+
+## AI use
+- I use AI in a similar way to how I would use a search engine, primarily by looking for explainations to concepts and example code snippets for what I need to achieve. My AI choice is Claude, and I use simply the web version. My IDE does not have any AI assistants installed.
