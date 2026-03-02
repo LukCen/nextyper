@@ -1,8 +1,12 @@
 'use client'
 
+import Leaderboard from "../components/Leaderboard"
+
 const page = () => {
   return (
-    <div>High Score goes here</div>
+    <>
+      <Leaderboard />
+    </>
   )
 }
 
