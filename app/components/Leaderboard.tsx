@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { useEffect, useState } from "react"
 
 const dummyPlayers = [
   { name: "SpeedDemon42", wpm: 87, accuracy: 94 },
@@ -25,6 +26,11 @@ const dummyPlayers = [
 
 
 const Leaderboard = () => {
+  const [scores, setScores] = useState(dummyPlayers)
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("current-user-score") ?? '[]')
+    setScores([...dummyPlayers, ...saved])
+  }, [])
   return (
     <main className="flex flex-col gap-4 items-center">
       <h1>Below you will find a leaderboard with scores from other players. Can you beat them?</h1>
@@ -37,9 +43,9 @@ const Leaderboard = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {dummyPlayers.map((p, i) => (
+          {scores.map((p, i) => (
             <TableRow key={i}>
-              <TableCell>{p.name}</TableCell>
+              <TableCell>{p.name || "John Doe"}</TableCell>
               <TableCell>{p.wpm}</TableCell>
               <TableCell>{p.accuracy}</TableCell>
             </TableRow>

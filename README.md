@@ -54,3 +54,8 @@ The round starts when you begin typing into the input field. The input will be a
 
 ## AI use
 - I use AI in a similar way to how I would use a search engine, primarily by looking for explainations to concepts and example code snippets for what I need to achieve. My AI choice is Claude, and I use simply the web version. My IDE does not have any AI assistants installed.
+
+Example ways I used Claude for this project :
+- quick explainations of concepts like React's state, useEffect and pathname.
+- quick code snippets, like the dummyPlayers array used to populate leaderboards
+- suggestions for the 'next step' (eg, "hey, this is what I have, this is what I want to accomplish, what options do I have?")

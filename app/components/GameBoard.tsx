@@ -77,7 +77,7 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
     const interval = setInterval(() => {
       setTimeElapsed(prev => {
         if (prev >= 10) {
-          // stops the timer when it hits 120 seconds - increments it every second otherwise
+          // timer stops when it hits 10s - next round will begin
           setIsFinished(true)
           setIsRunning(false)
           clearInterval(interval)
