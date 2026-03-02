@@ -9,7 +9,7 @@ export default function Home() {
   const [playerName, setPlayerName] = useState("")
   return (
     <>
-      {gameStarted ? <GameBoard /> : <MenuScreen />}
+      {gameStarted ? <GameBoard playerNameProp={playerName} /> : <MenuScreen onNameSet={setPlayerName} onStart={() => setGameStarted(true)} />}
     </>
   );
 }

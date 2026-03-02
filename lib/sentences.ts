@@ -1,5 +1,5 @@
 // this is where sentences selected for typing will be located, saved as an array
-const sentences = [
+export const sentences = [
   "I caught my squirrel rustling through my gym bag.",
   "Thirty years later, she still thought it was okay to put the toilet paper roll under rather than over.",
   "Written warnings in instruction manuals are worthless since rabbits can't read.",
@@ -11,3 +11,4 @@ const sentences = [
   "The irony of the situation wasn't lost on anyone in the room.",
   "I want more detailed information.",
 ]
+
