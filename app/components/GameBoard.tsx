@@ -1,7 +1,7 @@
 'use client'
 
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { calculateAccuracy, calculateWPM, getNextSentence } from "@/lib/gameUtils"
+import { calculateAccuracy, calculateWPM, getNextIndex, getNextSentence } from "@/lib/gameUtils"
 import "@/lib/sentences"
 import { sentences } from "@/lib/sentences"
 import { useEffect, useState } from "react"
@@ -26,13 +26,17 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
   const [correctChars, setCorrectChars] = useState(0)
   const [totalChars, setTotalChars] = useState(0)
 
-  const [currentSentence, setCurrentSentence] = useState(() =>
-    getNextSentence(Math.floor(Math.random() * sentences.length), sentences)
-  )
+  const [round, setRound] = useState(1)
+  // fetch a single sentence on demand
+  const [currentSentence, setCurrentSentence] = useState(sentences[0])
+  const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0)
 
+  // splits current sentence into individual characters for the purpose of checking typing accuracy
   const wordsToType = currentSentence.split(" ")
+  // fetch using helpers
   const wpm = calculateWPM(currentWord, timeElapsed)
   const accuracy = calculateAccuracy(correctChars, totalChars)
+
   // typing logic
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsRunning(true)
@@ -55,12 +59,15 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
       setSingleWord("")
     }
   }
+  // adding player score after game ends on user interaction aka pressing a button
   const addScore = () => {
     const playerResult = { name: playerNameProp, wpm, accuracy }
     const existingResult = JSON.parse(localStorage.getItem("current-user-score") ?? '[]')
     existingResult.push(playerResult)
     localStorage.setItem("current-user-score", JSON.stringify(existingResult))
   }
+
+  // main loop
   useEffect(() => {
     // end early if the game ends, or hasn't started yet - aka just don't run lol
     if (!isRunning || isFinished) return
@@ -80,6 +87,28 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
     return () => clearInterval(interval)
   }, [isRunning, isFinished])
 
+  // round progress control 
+  useEffect(() => {
+    if (!isFinished) return
+    if (round >= 10) return
+
+    // short pause to get ready for the next round
+    setTimeout(() => {
+      setRound(prev => prev + 1)
+      const nextIndex = getNextIndex(currentSentenceIndex, sentences)
+      setCurrentSentenceIndex(nextIndex)
+      setCurrentSentence(sentences[nextIndex])
+
+      //reset game states
+      setSingleWord("")
+      setCurrentWord(0)
+      setTimeElapsed(0)
+      setCorrectChars(0)
+      setTotalChars(0)
+      setIsFinished(false)
+      setIsRunning(false)
+    }, 2000)
+  }, [isFinished])
 
   return (
     <main className="flex flex-col gap-2 items-center">
@@ -90,10 +119,13 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
         <TableCaption><span className="bg-blue-500 px-2 py-1 text-white font-bold">Blue</span> - next to type</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>username</TableHead>
+            <TableHead>Username</TableHead>
             <TableHead>Current Words-per-minute</TableHead>
             <TableHead>Current Accuracy</TableHead>
             <TableHead>Time elapsed</TableHead>
+          </TableRow>
+          <TableRow>
+            <TableHead>Round #{round}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -127,8 +159,11 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
             </span>
           ))}
         </p>
-        <input disabled={isFinished} value={singleWord} onChange={handleChange} className="px-4 py-1 border border-solid border-black rounded-md" type="text" placeholder="user types here" />
-        <button className={isFinished === true ? "" : "hidden"} onClick={addScore}>Add my score to the high score!</button>
+        <input autoFocus disabled={isFinished} value={singleWord} onChange={handleChange} className="px-4 py-1 border border-solid border-black rounded-md" type="text" placeholder="user types here" />
+        <button
+          className={isFinished && round >= 10 ? "" : "hidden"} onClick={addScore}>
+          Add my score to the high score!
+        </button>
       </section>
     </main>
   )
