@@ -43,3 +43,5 @@ const getNextSentence = (currentIndex: number, sentences: string[]): string => {
 const getNextIndex = (currentIndex: number, sentences: string[]): number => {
   return currentIndex + 1 >= sentences.length ? 0 : currentIndex + 1
 }
+
+export { calculateWPM, calculateAccuracy, getNextSentence, getNextIndex }
