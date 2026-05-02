@@ -14,7 +14,7 @@ const MenuScreen = ({ onStart, onNameSet }: MenuScreenProps) => {
   return (
     <main className="w-fit mx-auto">
       <h1>Welcome to NexTyper! Input your name below and press start to begin.</h1>
-      <Field className=" bg-slate-200 shadow-sm p-2 mt-4">
+      <Field className="shadow-sm p-2 mt-4">
         <FieldLabel htmlFor="input-demo-api-key">Your player name</FieldLabel>
         <Input value={name} onChange={(e) => setName(e.target.value)} id="username" type="text" placeholder="John Doe" />
         <FieldDescription>
