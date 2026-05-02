@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation"
 
 const links =
   [
-    { text: "Main screen", pathName: "/", href: "/", icon: House },
-    { text: "Leaderboard", pathName: "/hi-score", href: "/hi-score", icon: Trophy },
-    { text: "About us", pathName: "/about", href: "/about", icon: Info }
+    { text: "Main screen", pathName: "/", href: "/", icon: House, key: 0 },
+    { text: "Leaderboard", pathName: "/hi-score", href: "/hi-score", icon: Trophy, key: 1 },
+    { text: "About us", pathName: "/about", href: "/about", icon: Info, key: 2 }
 
   ]
 
@@ -19,13 +19,12 @@ const NavBar = () => {
     <nav className="flex items-center justify-around w-screen border-b-1 border-neon-green p-2">
       <span className="font-black text-4xl">NexTyper</span>
       <ul className="flex justify-center gap-8">
-        {links.map(({ text, pathName, href, icon: Icon }) =>
-          <li className="flex items-center justify-center">
+        {links.map(({ text, pathName, href, icon: Icon, key }) =>
+          <li className="flex items-center justify-center" key={key}>
             <Link className={`flex items-center justify-center gap-2 w-full bg-gray-600 text-gray-100 px-4 py-1 hover:bg-blue-600 duration-125 rounded-sm font-medium ${pathname === pathName ? "bg-green-700" : ""}`} href={href}>
               {text}
               <Icon size={20} />
             </Link>
-
           </li>
         )}
       </ul>
