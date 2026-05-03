@@ -123,19 +123,37 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  main {
-    @apply border-neon-green border border-solid rounded-md p-4;
-  }
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
 }
 
+main {
+  border: 1px solid var(--color-neon-green);
+  border-radius: .5rem;
+  padding: 1rem;
+}
 
 th,td {
   text-align: center;
+}
+
+input:active, input:focus-visible {
+  box-shadow: 0px 0px 5px 1px var(--color-neon-green);
+}
+
+button {
+  cursor:pointer;
+}
+
+.color-slide{
+  background: linear-gradient(to left, var(--color-blue-500) 50%, var(--color-neon-green) 50%) right;
+  color:var(--color-foreground);
+  background-size: 200% 100%;
+  transition: all .25s ease;
+}
+
+.color-slide:hover {
+  background-position: left;
+  color: var(--color-background);
 }
