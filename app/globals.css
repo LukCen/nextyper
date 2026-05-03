@@ -134,3 +134,8 @@
     @apply border-neon-green border border-solid rounded-md p-4;
   }
 }
+
+
+th,td {
+  text-align: center;
+}

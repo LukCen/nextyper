@@ -29,17 +29,17 @@ const Leaderboard = () => {
   const [scores, setScores] = useState(dummyPlayers)
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("current-user-score") ?? '[]')
-    setScores([...dummyPlayers, ...saved])
+    setScores([...dummyPlayers, ...saved].sort((a, b) => b.accuracy - a.accuracy))
   }, [])
   return (
-    <main className="flex flex-col gap-4 items-center">
+    <main className="flex flex-col w-1/2 gap-4 items-center mx-auto">
       <h1>Below you will find a leaderboard with scores from other players. Can you beat them?</h1>
       <Table>
         <TableHeader>
           <TableRow>
             <TableHead>Name</TableHead>
             <TableHead>Words Per Minute</TableHead>
-            <TableHead>Accuracy %</TableHead>
+            <TableHead>Accuracy</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -47,7 +47,7 @@ const Leaderboard = () => {
             <TableRow key={i}>
               <TableCell>{p.name || "John Doe"}</TableCell>
               <TableCell>{p.wpm}</TableCell>
-              <TableCell>{p.accuracy}</TableCell>
+              <TableCell>{p.accuracy}%</TableCell>
             </TableRow>
           ))}
         </TableBody>
