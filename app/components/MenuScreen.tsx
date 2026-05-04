@@ -21,7 +21,7 @@ const MenuScreen = ({ onStart, onNameSet }: MenuScreenProps) => {
         <FieldDescription>
           Your selected name will persist through sessions.
         </FieldDescription>
-        <button onClick={() => { onNameSet(name), onStart() }} className="flex justify-center items-center px-4 py-1 color-slide rounded-sm max-w-fit">Start <ArrowRight size={16} /> </button>
+        <button onClick={() => { onNameSet(name); onStart() }} className="flex justify-center items-center px-4 py-1 color-slide rounded-sm max-w-fit">Start <ArrowRight size={16} /> </button>
       </Field>
     </main >
 

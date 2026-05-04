@@ -21,7 +21,7 @@ const NavBar = () => {
       <ul className="flex justify-center gap-8">
         {links.map(({ text, pathName, href, icon: Icon, key }) =>
           <li className="flex items-center justify-center" key={key}>
-            <Link className={`flex items-center justify-center gap-2 w-full bg-gray-600 text-gray-100 px-4 py-1 hover:bg-blue-600 duration-125 rounded-sm font-medium ${pathname === pathName ? "bg-green-700" : ""}`} href={href}>
+            <Link className={`flex items-center text-background justify-center gap-2 px-4 py-1 rounded-sm font-medium ${pathname === pathName ? "bg-neon-green shadow-[0px_0px_15px_3px_var(--color-neon-green)]" : "color-slide"}`} href={href}>
               {text}
               <Icon size={20} />
             </Link>
