@@ -40,6 +40,12 @@
   --color-card: var(--card);
   /* custom colors start */
   --color-neon-green: oklch(87.989% 0.21001 156.887);
+  --color-dark-ice: oklch(69.36% 0.1732 244.6);
+  --color-light-ice: oklch(82.07% 0.1452 215.29);
+  --color-dark-grey: oklch(39.45% 0.0284 156.49);
+  --color-light-grey : oklch(73.87% 0.0281 155.75);
+
+
   /* custom colors end */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -147,12 +153,19 @@ button {
 }
 
 .color-slide{
-  background: linear-gradient(to left, var(--color-blue-500) 50%, var(--color-neon-green) 50%) right;
-  color:var(--color-foreground);
-  background-size: 200% 100%;
-  transition: all .25s ease;
+  /* background: linear-gradient(to left, var(--color-blue-500) 50%, var(--color-neon-green) 50%) right;*/
+  color:var(--color-foreground) ;
+  background-size: 210% 100% !important;
+  transition: all .25s ease !important;
 }
 
+.color-slide-blue-green {
+  background: linear-gradient(to left, var(--color-blue-500) 50%, var(--color-neon-green) 50%) right;
+}
+
+.color-slide-blue-blue {
+  background: linear-gradient(to left, var(--color-dark-ice) 50%, var(--color-light-ice) 50%) right;
+}
 .color-slide:hover {
   background-position: left;
   color: var(--color-background);
