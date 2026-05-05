@@ -18,9 +18,9 @@ const MenuScreen = ({ onStart, onNameSet }: MenuScreenProps) => {
       <Field className="shadow-sm p-2 mt-4">
         <FieldLabel htmlFor="input-demo-api-key">Your player name</FieldLabel>
         <Input value={name} onChange={(e) => setName(e.target.value)} id="username" type="text" placeholder="John Doe" />
-        <FieldDescription>
+        {/* <FieldDescription>
           Your selected name will persist through sessions.
-        </FieldDescription>
+        </FieldDescription> */}
         <button onClick={() => { onNameSet(name); onStart() }} className="flex justify-center items-center px-4 py-1 font-medium color-slide color-slide-blue-blue rounded-sm max-w-fit">Start <ArrowRight size={16} /> </button>
       </Field>
     </main >

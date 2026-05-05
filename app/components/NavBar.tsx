@@ -8,7 +8,7 @@ const links =
   [
     { text: "Main screen", pathName: "/", href: "/", icon: House, key: 0 },
     { text: "Leaderboard", pathName: "/hi-score", href: "/hi-score", icon: Trophy, key: 1 },
-    { text: "About us", pathName: "/about", href: "/about", icon: Info, key: 2 }
+    { text: "About", pathName: "/about", href: "/about", icon: Info, key: 2 }
 
   ]
 

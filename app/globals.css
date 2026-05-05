@@ -154,17 +154,18 @@ button {
 
 .color-slide{
   /* background: linear-gradient(to left, var(--color-blue-500) 50%, var(--color-neon-green) 50%) right;*/
-  color:var(--color-foreground) ;
   background-size: 210% 100% !important;
   transition: all .25s ease !important;
 }
 
 .color-slide-blue-green {
   background: linear-gradient(to left, var(--color-blue-500) 50%, var(--color-neon-green) 50%) right;
+  color: var(--color-background);
 }
 
 .color-slide-blue-blue {
   background: linear-gradient(to left, var(--color-dark-ice) 50%, var(--color-light-ice) 50%) right;
+  color: var(--color-background);
 }
 .color-slide:hover {
   background-position: left;

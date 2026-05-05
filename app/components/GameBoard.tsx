@@ -116,24 +116,26 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
   }, [isFinished])
 
   return (
-    <main className="flex flex-col gap-2 items-center">
+    <main className="flex flex-col gap-2 items-center min-h-fit w-1/2 mx-auto">
       <Table>
+
         <TableCaption>You can see your score above.</TableCaption>
         <TableCaption><span className="bg-green-500 px-2 py-1 text-white font-bold">Green</span> - correctly typed</TableCaption>
         <TableCaption><span className="bg-red-500 px-2 py-1 text-white font-bold">Red</span> - incorrectly typed</TableCaption>
         <TableCaption><span className="bg-blue-500 px-2 py-1 text-white font-bold">Blue</span> - next to type</TableCaption>
+
         <TableHeader>
           <TableRow>
-            <TableHead>Username</TableHead>
-            <TableHead>Current Words-per-minute</TableHead>
-            <TableHead>Current Accuracy</TableHead>
-            <TableHead>Time elapsed</TableHead>
-          </TableRow>
-          <TableRow>
-            <TableHead>Round #{round}</TableHead>
+            <TableHead className="font-bold text-light-grey text-2xl p-1" colSpan={4}>Round #{round}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
+          <TableRow>
+            <TableCell>Username</TableCell>
+            <TableCell>Current Words-per-minute</TableCell>
+            <TableCell>Current Accuracy</TableCell>
+            <TableCell>Time elapsed</TableCell>
+          </TableRow>
           <TableRow>
             <TableCell>{playerNameProp || "John Doe"}</TableCell>
             <TableCell>{wpm}</TableCell>
@@ -157,7 +159,7 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
             </span>
           ))}
         </p>
-        <input ref={inputRef} autoFocus disabled={isFinished} value={singleWord} onChange={handleChange} className="px-4 py-1 border border-solid border-black rounded-md" type="text" placeholder="user types here" />
+        <input ref={inputRef} autoFocus disabled={isFinished} value={singleWord} onChange={handleChange} className="px-8 py-1 border border-solid border-neon-green rounded-md" type="text" placeholder="Start typing here!" />
         <button
           className={isFinished && round >= 10 ? "" : "hidden"} onClick={addScore}>
           Add my score to the high score!
