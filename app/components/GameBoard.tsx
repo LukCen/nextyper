@@ -117,8 +117,8 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
 
   return (
     <main className="flex flex-col gap-2 items-center min-h-fit w-fit lg:w-1/2 mx-2 lg:mx-auto">
-      <Table>
-
+      {/* desktop */}
+      <Table className="hidden lg:table">
         <TableCaption>You can see your score above.</TableCaption>
         <TableCaption><span className="bg-green-500 px-2 py-1 text-white font-bold">Green</span> - correctly typed</TableCaption>
         <TableCaption><span className="bg-red-500 px-2 py-1 text-white font-bold">Red</span> - incorrectly typed</TableCaption>
@@ -142,6 +142,38 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
             <TableCell>{accuracy}%</TableCell>
             <TableCell>{timeElapsed}</TableCell>
           </TableRow>
+        </TableBody>
+      </Table>
+      {/* mobile */}
+      <Table className="table lg:hidden">
+        <TableCaption>You can see your score above.</TableCaption>
+        <TableCaption><span className="bg-green-500 px-2 py-1 text-white font-bold">Green</span> - correctly typed</TableCaption>
+        <TableCaption><span className="bg-red-500 px-2 py-1 text-white font-bold">Red</span> - incorrectly typed</TableCaption>
+        <TableCaption><span className="bg-blue-500 px-2 py-1 text-white font-bold">Blue</span> - current to type</TableCaption>
+
+        <TableHeader>
+          <TableRow>
+            <TableHead className="font-bold text-light-grey text-2xl p-1" colSpan={2}>Round #{round}</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell>Username</TableCell>
+            <TableCell>{playerNameProp || "John Doe"}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Current Words-per-minute</TableCell>
+            <TableCell>{wpm}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Current Accuracy</TableCell>
+            <TableCell>{accuracy}%</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Time elapsed</TableCell>
+            <TableCell>{timeElapsed}</TableCell>
+          </TableRow>
+
         </TableBody>
       </Table>
       <hr />

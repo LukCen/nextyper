@@ -1,6 +1,6 @@
 'use client'
 
-import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
+import { Field, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { ArrowRight } from "lucide-react"
 import { useState } from "react"
@@ -15,7 +15,7 @@ const MenuScreen = ({ onStart, onNameSet }: MenuScreenProps) => {
   return (
     <main className="w-fit mx-4 lg:mx-auto">
       <h1 className="text-2xl font-bold text-center">Welcome to NexTyper!<br /> Input your name below and press start to begin.</h1>
-      {/* <span className="text-center text-sm">This game is best played on a desktop or a laptop!</span> */}
+      <span className="text-center text-sm my-2 text-gray-500">This game is best played on a desktop or a laptop!</span>
       <Field className="shadow-sm p-2 mt-4">
         <FieldLabel htmlFor="input-demo-api-key">Your player name</FieldLabel>
         <Input value={name} onChange={(e) => setName(e.target.value)} id="username" type="text" placeholder="John Doe" />
