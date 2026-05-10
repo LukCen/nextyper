@@ -122,7 +122,7 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
         <TableCaption>You can see your score above.</TableCaption>
         <TableCaption><span className="bg-green-500 px-2 py-1 text-white font-bold">Green</span> - correctly typed</TableCaption>
         <TableCaption><span className="bg-red-500 px-2 py-1 text-white font-bold">Red</span> - incorrectly typed</TableCaption>
-        <TableCaption><span className="bg-blue-500 px-2 py-1 text-white font-bold">Blue</span> - next to type</TableCaption>
+        <TableCaption><span className="bg-blue-500 px-2 py-1 text-white font-bold">Blue</span> - current to type</TableCaption>
 
         <TableHeader>
           <TableRow>
@@ -150,7 +150,7 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
           {wordsToType.map((w, i) => (
             <span key={i}>
               {i === currentWord ? w.split("").map((char, j) => (
-                <span key={j} className={j < singleWord.length ? singleWord[j] === char ? "bg-blue-300" : "bg-red-500" : ""}>
+                <span key={j} className={j < singleWord.length ? singleWord[j] === char ? "bg-dark-ice" : "bg-red-500" : ""}>
                   {char}
                 </span>
               )) : i < currentWord ? <span className="bg-green-500">{w}</span> // already typed - greyed out
