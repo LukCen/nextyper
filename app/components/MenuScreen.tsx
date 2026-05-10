@@ -13,8 +13,9 @@ interface MenuScreenProps {
 const MenuScreen = ({ onStart, onNameSet }: MenuScreenProps) => {
   const [name, setName] = useState("")
   return (
-    <main className="w-fit mx-auto">
+    <main className="w-fit mx-4 lg:mx-auto">
       <h1 className="text-2xl font-bold text-center">Welcome to NexTyper!<br /> Input your name below and press start to begin.</h1>
+      {/* <span className="text-center text-sm">This game is best played on a desktop or a laptop!</span> */}
       <Field className="shadow-sm p-2 mt-4">
         <FieldLabel htmlFor="input-demo-api-key">Your player name</FieldLabel>
         <Input value={name} onChange={(e) => setName(e.target.value)} id="username" type="text" placeholder="John Doe" />

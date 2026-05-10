@@ -34,10 +34,10 @@ const NavBar = () => {
         </ul>
       </nav>
       {/* mobile */}
-      <nav className="flex lg:hidden items-center justify-around w-screen border-b-1 border-neon-green p-2 relative">
+      <nav className="flex lg:hidden items-center justify-between w-screen border-b-1 border-neon-green p-2 relative">
         <span className="font-black text-4xl">NexTyper</span>
         <button onClick={() => setMenuIsVisible(!menuIsVisible)} className="border-2 border-dark-ice rounded-sm px-4 py-2">Menu</button>
-        <ul className={`absolute flex flex-col bg-background justify-center gap-8 py-4 px-2 border-b-1 border-l-1 border-t-1 border-neon-green top-full ${menuIsVisible === true ? "right-0" : "right-100"}`}>
+        <ul className={`absolute flex flex-col bg-background justify-center gap-8 py-4 px-2 border-b-1 border-l-1 border-t-1 border-neon-green top-full ${menuIsVisible === true ? "right-0" : "right-200"}`}>
           {links.map(({ text, pathName, href, icon: Icon, key }) =>
             <li className="flex items-center justify-center " key={key}>
               <Link className={`flex items-center text-background justify-center min-w-full gap-2 px-4 py-1 rounded-sm font-medium ${pathname === pathName ? "bg-neon-green shadow-[0px_0px_15px_3px_var(--color-neon-green)]" : "color-slide color-slide-blue-blue"}`} href={href}>

@@ -116,7 +116,7 @@ const GameBoard = ({ playerNameProp }: GameBoardProps) => {
   }, [isFinished])
 
   return (
-    <main className="flex flex-col gap-2 items-center min-h-fit w-1/2 mx-auto">
+    <main className="flex flex-col gap-2 items-center min-h-fit w-fit lg:w-1/2 mx-2 lg:mx-auto">
       <Table>
 
         <TableCaption>You can see your score above.</TableCaption>
