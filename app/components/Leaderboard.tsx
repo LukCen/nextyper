@@ -37,6 +37,7 @@ const Leaderboard = () => {
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHead>Place</TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Words Per Minute</TableHead>
             <TableHead>Accuracy</TableHead>
@@ -45,6 +46,7 @@ const Leaderboard = () => {
         <TableBody>
           {scores.map((p, i) => (
             <TableRow key={i}>
+              <TableCell>{i + 1}</TableCell>
               <TableCell>{p.name || "John Doe"}</TableCell>
               <TableCell>{p.wpm}</TableCell>
               <TableCell>{p.accuracy}%</TableCell>
