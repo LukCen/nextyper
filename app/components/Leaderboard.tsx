@@ -32,9 +32,9 @@ const Leaderboard = () => {
     setScores([...dummyPlayers, ...saved].sort((a, b) => b.accuracy - a.accuracy))
   }, [])
   return (
-    <main className="flex flex-col w-1/2 gap-4 items-center mx-auto">
+    <main className="flex flex-col w-1/2 gap-4 items-center mx-auto text-neon-green">
       <h1>Below you will find a leaderboard with scores from other players. Can you beat them?</h1>
-      <Table>
+      <Table className="text-lg">
         <TableHeader>
           <TableRow>
             <TableHead>Place</TableHead>
@@ -45,8 +45,8 @@ const Leaderboard = () => {
         </TableHeader>
         <TableBody>
           {scores.map((p, i) => (
-            <TableRow key={i}>
-              <TableCell>{i + 1}</TableCell>
+            <TableRow key={i} className={"font-bold badge-" + (i + 1)}>
+              <TableCell >{i + 1}</TableCell>
               <TableCell>{p.name || "John Doe"}</TableCell>
               <TableCell>{p.wpm}</TableCell>
               <TableCell>{p.accuracy}%</TableCell>

@@ -171,3 +171,16 @@ button {
   background-position: left;
   color: var(--color-background);
 }
+
+
+.badge-1{
+  background: gold;
+  color: black;
+}
+.badge-2{
+  background: silver;
+  color: black;
+}
+.badge-3{
+  background:brown;
+}
