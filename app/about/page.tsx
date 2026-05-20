@@ -2,10 +2,10 @@
 
 const page = () => {
   return (
-    <main className="flex flex-col gap-4 items-center w-fit mx-auto">
+    <main className="flex flex-col gap-4 items-center w-fit mx-auto text-neon-green text-lg">
       <section className="baseinfo flex flex-col gap-2 items-center">
         <h1 className="text-2xl font-bold">NexTyper - a typing game for practicing your speed and accuracy!</h1>
-        <p>NexTyper is a web game developed for purpsoe of testing your speed and accuracy when typing.</p>
+        <p>NexTyper is a web game developed for purpose of testing your speed and accuracy when typing.</p>
         <p>Test out your skills and see if you can beat the hall of fame!</p>
       </section>
       <hr className="border-neon-green w-full" />
